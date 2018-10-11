@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Libro</title>
+</head>
+<body>
+<form action="/book" method="Post">
+    <input type="hidden" name="id" th:value="${book.id}">
+    <b>Titulo:</b><input type="text" name="titulo" th:value="${book.titulo}">
+    <b>Categoria:</b> <div class="row">
+        <div class="col-md-4">
+            <select th:field="${book.bookCategory}" class="form-control">
+                <div th:each="bookcategory:${categories}">
+                    <option th:value="${bookcategory.id}" th:text="${bookcategory.name}">
+
+                    </option>
+
+                </div>
+            </select>
+        </div>
+    </div>
+    <input type="submit" value="Guardar">
+</form>
+</body>
+</html>

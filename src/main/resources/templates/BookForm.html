@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Libro</title>
+</head>
+<body>
+<form action="/book" method="Post">
+    <b>Titulo:</b><input type="text" name="titulo">
+    <b>Categoria:</b> <div class="row">
+    <div class="col-md-4">
+        <select th:field="*{bookcategory}" class="form-control">
+                <option th:each="bookcategory:${categories}" th:value="${bookcategory.id}" th:text="${bookcategory.name}">
+                </option>
+        </select>
+</div>
+</div>
+    <input type="submit" value="Guardar">
+</form>
+</body>
+</html>

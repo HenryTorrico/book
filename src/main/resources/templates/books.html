@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" >
+    <title>Lista de Libros</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Titulo</th>
+        <th>Categoria</th>
+        <th>Likes</th>
+        <th>Opciones</th>
+    </tr>
+    <tr th:each="book: ${books}">
+        <td th:text="${book.id}">
+        </td>
+        <td th:text="${book.titulo}">
+
+        </td>
+        <td th:text="${book.categoria}">
+
+        </td>
+        </td>
+        <td th:text="${book.likes}">
+
+        </td>
+        <td>
+            <a th:href="${ '/book/' + book.id}">Ver</a>
+            <a th:href="${ '/book/edit/' + book.id}">Editar</a>
+            <a th:href="${ '/book/delete/' + book.id}">Borrar</a>
+            <a th:href="${ '/book/like/' + book.id}">Like</a>
+            <a th:href="${ '/book/dislike/' + book.id}">Dislike</a>
+
+
+
+
+        </td>
+    </tr>
+</table>
+
+    <h1><a href="/book/new">Nuevo Libro</a></h1>
+
+</body>
+</html>
