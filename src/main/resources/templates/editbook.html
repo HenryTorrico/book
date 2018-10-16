@@ -5,21 +5,13 @@
     <title>Editar Libro</title>
 </head>
 <body>
-<form action="/book" method="Post">
+<form action="/book" th:object="${book}"  method="POST" >
     <input type="hidden" name="id" th:value="${book.id}">
-    <b>Titulo:</b><input type="text" name="titulo" th:value="${book.titulo}">
-    <b>Categoria:</b> <div class="row">
-        <div class="col-md-4">
-            <select th:field="${book.bookCategory}" class="form-control">
-                <div th:each="bookcategory:${categories}">
-                    <option th:value="${bookcategory.id}" th:text="${bookcategory.name}">
+    <b>Texto:</b><input type="text" th:field="*{title}">
+    <b>Categoria:</b> <select th:field="*{bookCategory}">
+        <option th:each="bookCategory: ${bookCategories}" th:value="${bookCategory.id}"  th:text="${bookCategory.name}"></option>
+    </select>
 
-                    </option>
-
-                </div>
-            </select>
-        </div>
-    </div>
     <input type="submit" value="Guardar">
 </form>
 </body>

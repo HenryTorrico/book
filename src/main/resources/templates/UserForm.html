@@ -2,12 +2,13 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Nueva Categoria</title>
+    <title>Nuevo Usuario</title>
 </head>
 <body>
-<form action="/bookcategory" method="Post">
-    <input type="hidden" name="id" th:value="${bookcategory.id}"/>
+<form action="/user" method="Post">
+    <input type="hidden" name="id" th:value="${user.id}"/>
     <b>Nombre:</b><input type="text" name="name">
+    <b>Apellido:</b><input type="text" name="apellido">
     <input type="submit" value="Guardar">
 </form>
 </body>

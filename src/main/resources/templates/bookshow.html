@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Libro</title>
 </head>
-<body>
-<b>Id:</b><span th:text="${book.id}"></span>
-<b>Titulo:</b><span th:text="${book.titulo}"></span>
-<b>Categoria:</b><span th:text="${book.categoria}"></span>
-<b>Likes:</b><span th:text="${book.likes}"></span>
-
+<body th:object="${book}">
+        <b>Id:</b><span th:text="${book.id}"></span>
+        <b>Texto:</b><span th:text="${book.title}"></span>
+        <b>Categoria:</b><span th:text="${book.bookCategory.name}"></span>
+        <b>Autor:</b><span th:text="${book.user.name}" th:text="${book.user.apellido}"></span>
+        <b>Likes:</b><span th:text="${book.likes}"></span>
 </body>
 </html>

@@ -1,48 +1,46 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8" >
-    <title>Lista de Libros</title>
+    <title>Title</title>
 </head>
 <body>
 
-<table border="1">
+
+<table border="1" th:object="${book}">
     <tr>
         <th>Id</th>
-        <th>Titulo</th>
+        <th>Texto</th>
         <th>Categoria</th>
+        <th>Nombre Autor</th>
+        <th>Apellido Autor</th>
         <th>Likes</th>
-        <th>Opciones</th>
     </tr>
-    <tr th:each="book: ${books}">
-        <td th:text="${book.id}">
+    <tr th:each="Book: ${book}">
+        <td th:text="${Book.id}">
         </td>
-        <td th:text="${book.titulo}">
+        <td th:text="${Book.title}">
 
         </td>
-        <td th:text="${book.categoria}">
-
+        <td th:text="${Book.bookCategory.name}">
         </td>
+        <td th:text="${Book.user.name}">
         </td>
-        <td th:text="${book.likes}">
+        <td th:text="${Book.user.apellido}">
+        </td>
+        <td th:text="${Book.likes}">
 
         </td>
         <td>
-            <a th:href="${ '/book/' + book.id}">Ver</a>
-            <a th:href="${ '/book/edit/' + book.id}">Editar</a>
-            <a th:href="${ '/book/delete/' + book.id}">Borrar</a>
-            <a th:href="${ '/book/like/' + book.id}">Like</a>
-            <a th:href="${ '/book/dislike/' + book.id}">Dislike</a>
-
-
-
+            <a th:href="@{/book/}+${Book.id}">Ver</a>
+            <a th:href="@{/book/edit/}+${Book.id}">Editar</a>
+            <a th:href="@{/book/delete/}+${Book.id}">Borrar</a>
+            <a th:href="@{/book/like/}+${Book.id}">Like</a>
+            <a th:href="@{/book/dislike/}+${Book.id}">Dislike</a>
 
         </td>
     </tr>
 </table>
-
-    <h1><a href="/book/new">Nuevo Libro</a></h1>
-
+<h1><a href="/book/new">Nuevo</a></h1>
 </body>
 </html>

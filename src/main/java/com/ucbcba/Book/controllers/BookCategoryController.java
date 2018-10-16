@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import javax.validation.Valid;
 
@@ -24,12 +28,16 @@ public class BookCategoryController {
         model.addAttribute("bookcategory", new BookCategory());
         return "BookCategoryForm";
     }
+    @RequestMapping(value = "/bookcategory/edit/{id}")
+    public String editBookCategory(@PathVariable Integer id, Model model) {
+        BookCategory bookCategory = bookCategoryService.getBookCategoryById(id);
+        model.addAttribute("categories", bookCategory);
+        return "editbookcategory";
+    }
 
     @PostMapping(value = "/bookcategory")
     public String save(@Valid BookCategory bookcategory, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            return "BookCategoryForm";
-        }
+
         bookCategoryService.saveBookCategory(bookcategory);
         return "redirect:/categories";
     }
@@ -42,12 +50,7 @@ public class BookCategoryController {
         return "categoryshow";
     }
 
-    @RequestMapping(value = "/bookcategory/edit/{id}")
-    public String editBookCategory(@PathVariable Integer id, Model model) {
-        BookCategory bookCategory = bookCategoryService.getBookCategoryById(id);
-        model.addAttribute("categories", bookCategory);
-        return "editbookcategory";
-    }
+
 
     @RequestMapping(value = "/bookcategory/delete/{id}", method = RequestMethod.GET)
     public String deleteBookCategory(@PathVariable Integer id, Model model) {
