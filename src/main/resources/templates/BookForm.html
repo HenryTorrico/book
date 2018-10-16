@@ -7,13 +7,14 @@
 <body>
 <form action="/book" th:object="${book}"  method="POST" >
     <input th:field="${book.id}" hidden>
-    <b>Texto:</b><input type="text" th:field="*{title}">
+    <b>Titulo:</b><input type="text" th:field="*{title}">
     <b>Categoria:</b> <select th:field="*{bookCategory}">
         <option th:each="bookCategory: ${bookCategories}" th:value="${bookCategory.id}"  th:text="${bookCategory.name}"></option>
     </select>
     <b>Autor:</b> <select th:field="*{user}">
     <option th:each="user: ${users}" th:value="${user.id}"  th:text="${user.name}"></option>
     </select>
+    <b>Mostrar:</b><input type="text" th:field="*{mostrar}">
 
     <input type="submit" value="Guardar">
 </form>

@@ -10,6 +10,7 @@
         <th>Id</th>
         <th>Nombre</th>
         <th>Apellido</th>
+        <th>Ciudad</th>
 
     </tr>
     <tr th:each="user: ${users}">
@@ -18,6 +19,8 @@
         <td th:text="${user.name}">
         </td>
         <td th:text="${user.apellido}">
+        </td>
+        <td th:text="${user.country.name}">
         </td>
         <td>
             <a th:href="${ '/user/' + user.id}">Ver</a>

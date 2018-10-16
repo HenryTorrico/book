@@ -1,7 +1,9 @@
 package com.ucbcba.Book.controllers;
 
 import com.ucbcba.Book.entities.Book;
+import com.ucbcba.Book.entities.Country;
 import com.ucbcba.Book.entities.User;
+import com.ucbcba.Book.services.CountryService;
 import com.ucbcba.Book.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,13 @@ import java.util.List;
 @Controller
 public class UserController {
     public UserService userService;
+
+    public CountryService countryService;
+
+
+    @Autowired
+    public void setCountryService(CountryService countryService){this.countryService=countryService; }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -26,13 +35,17 @@ public class UserController {
 
     @RequestMapping(value = "/user/new", method = RequestMethod.GET)
     public String newUser(Model model) {
+        List<Country> countries  = (List) countryService.listAllCountries();
         model.addAttribute("user", new User());
+        model.addAttribute("countries", countries);
         return "UserForm";
     }
     @RequestMapping(value = "/user/edit/{id}")
     public String editUser(@PathVariable Integer id, Model model) {
         User user = userService.findUser(id);
+        List<Country> countries  = (List) countryService.listAllCountries();
         model.addAttribute("user", user);
+        model.addAttribute("countries", countries);
         return "editUser";
     }
 

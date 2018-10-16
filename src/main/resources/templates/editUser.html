@@ -9,6 +9,9 @@
     <input type="hidden" name="id" th:value="${user.id}">
     <b>Nombre:</b><input type="text" name="name" th:value="${user.name}">
     <b>Apellido:</b><input type="text" name="apellido" th:value="${user.apellido}">
+    <b>Ciudad:</b> <select th:field="*{user.country}">
+    <option th:each="country: ${countries}" th:value="${country.id}"  th:text="${country.name}"></option>
+</select>
     <input type="submit" value="Guardar">
 </form>
 </body>

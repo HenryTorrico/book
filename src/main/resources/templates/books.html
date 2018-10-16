@@ -10,35 +10,41 @@
 <table border="1" th:object="${book}">
     <tr>
         <th>Id</th>
-        <th>Texto</th>
+        <th>Titulo</th>
         <th>Categoria</th>
         <th>Nombre Autor</th>
         <th>Apellido Autor</th>
         <th>Likes</th>
+        <th>Mostrar</th>
     </tr>
     <tr th:each="Book: ${book}">
-        <td th:text="${Book.id}">
-        </td>
-        <td th:text="${Book.title}">
+        <div th:if="${Book.mostrar==true}">
 
-        </td>
-        <td th:text="${Book.bookCategory.name}">
-        </td>
-        <td th:text="${Book.user.name}">
-        </td>
-        <td th:text="${Book.user.apellido}">
-        </td>
-        <td th:text="${Book.likes}">
+            <td th:text="${Book.id}">
+            </td>
+            <td th:text="${Book.title}">
 
-        </td>
-        <td>
-            <a th:href="@{/book/}+${Book.id}">Ver</a>
-            <a th:href="@{/book/edit/}+${Book.id}">Editar</a>
-            <a th:href="@{/book/delete/}+${Book.id}">Borrar</a>
-            <a th:href="@{/book/like/}+${Book.id}">Like</a>
-            <a th:href="@{/book/dislike/}+${Book.id}">Dislike</a>
+            </td>
+            <td th:text="${Book.bookCategory.name}">
+            </td>
+            <td th:text="${Book.user.name}">
+            </td>
+            <td th:text="${Book.user.apellido}">
+            </td>
+            <td th:text="${Book.likes}">
+            </td>
+            <td th:text="${Book.mostrar}">
 
-        </td>
+            </td>
+            <td>
+                <a th:href="@{/book/}+${Book.id}">Ver</a>
+                <a th:href="@{/book/edit/}+${Book.id}">Editar</a>
+                <a th:href="@{/book/delete/}+${Book.id}">Borrar</a>
+                <a th:href="@{/book/like/}+${Book.id}">Like</a>
+                <a th:href="@{/book/dislike/}+${Book.id}">Dislike</a>
+
+            </td>
+        </div>
     </tr>
 </table>
 <h1><a href="/book/new">Nuevo</a></h1>

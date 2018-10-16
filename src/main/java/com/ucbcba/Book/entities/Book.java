@@ -22,6 +22,9 @@ public class Book {
     @JoinColumn(name="book_category_id")
     public BookCategory bookCategory;
 
+
+    boolean mostrar=true;
+
     @ManyToOne(cascade = CascadeType.REFRESH)
     //@JoinColumn(name="user_id")
     @JoinTable(name = "user_book",joinColumns={@JoinColumn(name="book_id")})
@@ -71,5 +74,13 @@ public class Book {
 
     public void setLikes(Integer likes) {
         this.likes = likes;
+    }
+
+    public boolean isMostrar() {
+        return mostrar;
+    }
+
+    public void setMostrar(boolean mostrar) {
+        this.mostrar = mostrar;
     }
 }

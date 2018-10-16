@@ -1,6 +1,7 @@
 package com.ucbcba.Book.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -17,6 +18,10 @@ public class User {
 
     @OneToMany(mappedBy="user")
     private List<Book> book;
+
+    @NotNull
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Country country;
 
     public Integer getId() {
         return id;
@@ -40,6 +45,14 @@ public class User {
 
     public List<Book> getBook() {
         return book;
+    }
+
+    public Country getCountry() {
+        return this.country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public String getApellido() {
